@@ -81,8 +81,8 @@ def extract_text(file):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    similarity = None  # Benzerlik oranı başlangıçta None olarak tanımlanır
-    error = None  # Hata mesajı başlangıçta None olarak tanımlanır
+    similarity = None  
+    error = None  
 
     if request.method == 'POST':
         file1 = request.files['file1']
