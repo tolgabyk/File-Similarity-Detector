@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dosya Benzerlik Karşılaştırıcı</title>
+    <style>
+        /* Genel stil ayarları */
+        body {
+            background-color: #121212;  /* Koyu arka plan rengi */
+            color: #E0E0E0;  /* Açık renk yazılar */
+            font-family: 'Arial', sans-serif;  /* Okunaklı yazı tipi */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;  /* Dikey ortalama */
+        }
+        
+        /* Ana kapsayıcı stil ayarları */
+        .container {
+            background-color: #1E1E1E;  /* Daha açık koyu bir arka plan */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        /* Başlık stil ayarları */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #BB86FC;  /* Öne çıkan mor renk */
+        }
+        
+        /* Form stil ayarları */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Etiket ve dosya yükleme stil ayarları */
+        label {
+            margin: 10px 0 5px;
+            font-size: 16px;
+        }
+        
+        input[type="file"] {
+            margin-bottom: 20px;
+            color: #E0E0E0;
+        }
+        
+        /* Buton stil ayarları */
+        button {
+            background-color: #BB86FC;  /* Mor buton rengi */
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #9f70d8;  /* Hover efekti için daha koyu mor ton */
+        }
+
+        /* Sonuç stil ayarları */
+        h2, h3 {
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #03DAC5;  /* Öne çıkan turkuaz renk */
+        }
+
+        h3 {
+            color: #CF6679;  /* Hata mesajı için öne çıkan kırmızı renk */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dosya Benzerlik Karşılaştırıcı</h1>
+        <form method="post" enctype="multipart/form-data">
+            <label for="file1">Birinci Dosya (PDF, DOCX, TXT):</label>
+            <input type="file" name="file1" required>
+            
+            <label for="file2">İkinci Dosya (PDF, DOCX, TXT):</label>
+            <input type="file" name="file2" required>
+            
+            <button type="submit">Benzerlik Oranını Bul</button>
+        </form>
+
+        {% if similarity is not none %}
+            <h2>Benzerlik Oranı: {{ similarity * 100 }}%</h2>
+        {% endif %}
+        
+        {% if error %}
+            <h3>{{ error }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
